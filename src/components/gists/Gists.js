@@ -1,6 +1,8 @@
 import React, { Component } from 'react'; 
+import { Route, Switch } from 'react-router-dom'
 import GetGists from './GetGists'; 
 import GistList from './GistList'; 
+import GistItem from './GistItem'; 
 import * as github from '../../services/github'; 
 
 export default class Gists extends Component { 
@@ -29,7 +31,13 @@ export default class Gists extends Component {
             <section>
                 <h1>Gist Getter</h1> 
                 <GetGists search={this.handleGetGists}/>
-                <GistList gists={this.state.gists}/> 
+                <Switch>
+                    <Route path="/gist/:id" component={GistItem}/>
+                    <Route path="/">
+                        <GistList gists={this.state.gists}/>
+                    </Route>
+                    
+                </Switch>
             </section>
         );
     }

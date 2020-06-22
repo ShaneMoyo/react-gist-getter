@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Gists from './components/gists/Gists'; 
-import GistItem from './components/gists/GistItem'; 
+
 import { 
   BrowserRouter as Router, 
   Route, 
@@ -29,7 +29,6 @@ function App() {
           <Route path="/about">
             {About}
           </Route>
-          <Route path="/gist/:id" component={GistItem}/>
           <Route path="/" component={Gists}/>
         </Switch> 
       </Router>
