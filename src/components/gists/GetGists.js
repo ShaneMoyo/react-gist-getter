@@ -23,13 +23,17 @@ export default class GetGists extends Component {
         event.preventDefault(); 
         this.setState({ error: "" });
         const { username } = this.state; 
+        const { search } = this.props
         console.log('submitting: ', username ); 
-        if(this.validateUsername(username)) {
-            this.setState({ username: "" });
-        } else { 
+        if(!this.validateUsername(username)) {
             this.setState({ error: "username must only include letters and numbers" });
             return false; 
-        }
+        } 
+
+        return search(username).then(() => {
+            this.setState({ username: "" });
+        })
+            
         
     }
 
